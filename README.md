@@ -16,7 +16,11 @@ This project is a fully functional wallet API built with Node.js and MongoDB. It
 
 ### Render Deployment
 
-The API is deployed on Render. You can access it [here]().
+The API is deployed on Render. You can access it here https://wallet-api-x5wq.onrender.com/
+
+### Postman Documentation 
+
+https://documenter.getpostman.com/view/36984655/2sA3kPq59J
 
 ## Prerequisites
    - Node.js v12 or higher

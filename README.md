@@ -1,136 +1,123 @@
-# Node Wallet API
+# Wallet API
 
-This project is a Node.js-based Wallet API that handles user authentication, transactions, and email notifications. The code is strictly written in ES6 standards, using ESLint and Prettier for code quality and consistency.
+This project is a fully functional wallet API built with Node.js and MongoDB. It features JWT token-based session management, email verification, login with password, fake balance on signup, transfer functionality, and email notifications.
 
 ## Features
 
-- **Code Quality**: The project adheres to ES6 standards and utilizes ESLint and Prettier for maintaining code quality.
-- **JWT Authentication**: User sessions are maintained using JSON Web Tokens (JWT).
-- **Email Verification**: On user signup, a verification email is sent.
-- **User Login**: Supports login with password and OTP.
-- **Fake Balance**: New users are given a fake balance on signup.
-- **Transaction Management**: Users can transfer funds to each other.
-- **Transaction History**: Users and admins can view transaction details.
-- **Email Notifications**: Users receive email notifications for transaction success or failure.
+- User registration with email verification
+- User login with password
+- JWT token-based session management
+- Fake balance assigned on signup
+- Transfer functionality between users
+- Email notifications for various events
+- Transaction history
 
 ## Deployment
 
 ### Render Deployment
 
-The API is deployed on Render. You can access it [here](https://node-wallet-api.onrender.com).
+The API is deployed on Render. You can access it [here]().
 
-<div style="border: 1px solid #ccc; padding: 10px;">
-    <img src="images/render_deployment.png" alt="Render Deployment">
-</div>
-
-### Postman Publish
-
-The API documentation is published on Postman. You can view it [here](https://documenter.getpostman.com/view/36718380/2sA3e5c7ss).
-
-<div style="border: 1px solid #ccc; padding: 10px;">
-    <img src="images/postman_publish.png" alt="Postman Publish">
-</div>
+## Prerequisites
+   - Node.js v12 or higher
+   - MongoDB
 
 ## Installation
 
-1. **Clone the repository:**
+1. Clone the repository:
+
     ```bash
-    git clone https://github.com/yourusername/Node-Wallet-API.git
-    cd Node-Wallet-API
+    git clone https://github.com/rajat-bakale/wallet-api.git
     ```
 
-2. **Install dependencies:**
+2. Navigate to the project directory:
+
+    ```bash
+    cd Wallet-API
+    ```
+
+3. Install the dependencies:
+
     ```bash
     npm install
     ```
 
-3. **Set up environment variables:**
+4. Set up environment variables:
 
-    Create a `.env` file in the root directory with the following content:
+    Create a `.env` file in the root directory and add the following variables:
 
-    ```
-    MONGODB_URI=mongodb+srv://<username>:<password>@<clustername>.mongodb.net/<dbname>?retryWrites=true&w=majority
-    JWT_SECRET=your_jwt_secret
-    EMAIL_HOST=smtp.gmail.com
-    EMAIL_PORT=587
-    EMAIL_USER=your_email@gmail.com
-    EMAIL_PASS=your_email_password
+    ```bash
     PORT=3000
+    JWT_SECRET=your_jwt_secret
+    EMAIL_HOST=smtp.your-email.com
+    EMAIL_PORT=587
+    EMAIL_USER=your-email@example.com
+    EMAIL_PASS=your-email-password
+    MONGODB_URI=mongodb+srv://<username>:<password>@<clustername>.mongodb.net/<dbname>?retryWrites=true&w=majority
     ```
 
-4. **Run the server using nodemon:**
+5. Start the server:
+
     ```bash
     nodemon
     ```
 
-## Usage
+    The server should be running on `http://localhost:3000`.
 
-1. **User Registration:**
-    - Users can register with their name, email, password, and terms and conditions agreement.
-    - An email verification link is sent upon successful registration.
+## API Endpoints 
 
-2. **User Login:**
-    - Users can log in using their email and password.
-    - The server responds with a JWT token for session management.
+### Register a New User
+    To register a new user, send a `POST` request to `/api/user/register` with the following JSON payload:
 
-3. **Fake Balance on Signup:**
-    - Each new user receives a default balance of 1000 units upon registration.
+```json
+{
+  "name": "Rajat",
+  "email": "rajat@example.com",
+  "password": "password123",
+  "password_confirmation": "password123",
+  "tc": true
+}
+```
 
-4. **Transaction Management:**
-    - Users can transfer funds to other users by providing the recipient's email and the amount to transfer.
-    - The system checks for sufficient balance and updates both users' balances accordingly.
+### Login
 
-5. **Transaction History:**
-    - Users can view their transaction history.
-    - Admins can view the transaction history of all users.
+To login, send a `POST` request to `/api/user/login` with the following JSON payload:
 
-6. **Email Notifications:**
-    - Users receive an email notification for successful and failed transactions.
+```json
+{
+    "email": "rajat@example.com",
+    "password": "password123"
+}
+```
 
-## Output Images
+If the login is successful, you will receive a JWT token in the response.
 
-Here are some output images demonstrating the functionality of the Node Wallet API:
+## Authentication
 
-1. **User Registration:**
-   <div style="border: 1px solid #ccc; padding: 10px;">
-       <img src="images/user_registration.png" alt="User Registration">
-   </div>
+This API uses JWT for authentication. Include the JWT token in the `Authorization` header of requests to protected routes.
 
-2. **Email Verification:**
-   <div style="border: 1px solid #ccc; padding: 10px;">
-       <img src="images/email_verification.png" alt="Email Verification">
-   </div>
+Example:
 
-3. **User Login:**
-   <div style="border: 1px solid #ccc; padding: 10px;">
-       <img src="images/user_login.png" alt="User Login">
-   </div>
-
-4. **JWT Token Response:**
-   <div style="border: 1px solid #ccc; padding: 10px;">
-       <img src="images/jwt_token_response.png" alt="JWT Token Response">
-   </div>
-
-5. **Fake Balance on Signup:**
-   <div style="border: 1px solid #ccc; padding: 10px;">
-       <img src="images/fake_balance_signup.png" alt="Fake Balance on Signup">
-   </div>
-
-6. **Transfer Amount:**
-   <div style="border: 1px solid #ccc; padding: 10px;">
-       <img src="images/transfer_amount.png" alt="Transfer Amount">
-   </div>
-
-7. **Transaction History:**
-   <div style="border: 1px solid #ccc; padding: 10px;">
-       <img src="images/transaction_history.png" alt="Transaction History">
-   </div>
-
-8. **Email Notification for Successful Transaction:**
-   <div style="border: 1px solid #ccc; padding: 10px;">
-       <img src="images/successful_transaction_email.png" alt="Successful Transaction Email">
-   </div>
+```http
+Authorization: Bearer your_jwt_token
+```
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+Contributions are welcome! Please create a pull request or open an issue to discuss your changes.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Screenshots
+
+![user_registration](https://github.com/user-attachments/assets/e355a2e7-ed7f-4d81-9621-83a7620cdc66)
+![welcome_mail](https://github.com/user-attachments/assets/1c6cdda1-b37b-4174-9314-cd97d8f1d8e2)
+![user_login](https://github.com/user-attachments/assets/b9d54267-afc2-490c-8fed-886186ffa574)
+![transfer amount](https://github.com/user-attachments/assets/4c1e5ffd-1e56-4749-bbf5-b9f7335bd81a)
+![transaction_successful_mail](https://github.com/user-attachments/assets/81fabb8a-f233-420e-8cce-b80ad9379933)
+![transaction history](https://github.com/user-attachments/assets/dd46fe79-1336-4c35-bd14-3311ca8bca9a)
+![logged user info](https://github.com/user-attachments/assets/ec351701-a228-4c1d-903c-bdba0d884cb2)
+
+

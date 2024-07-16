@@ -123,5 +123,6 @@ This project is licensed under the MIT License.
 ![transaction_successful_mail](https://github.com/user-attachments/assets/81fabb8a-f233-420e-8cce-b80ad9379933)
 ![transaction history](https://github.com/user-attachments/assets/dd46fe79-1336-4c35-bd14-3311ca8bca9a)
 ![logged user info](https://github.com/user-attachments/assets/ec351701-a228-4c1d-903c-bdba0d884cb2)
+![Render](https://github.com/user-attachments/assets/339bd8b6-e45a-4a76-8ebe-c08cbf02f80c)
 
 

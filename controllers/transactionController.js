@@ -80,3 +80,20 @@ export const transactionHistory = async (req, res) => {
   }
 };
 
+export const allTransactions = async (req, res) => {
+  try {
+    const transactions = await Transaction.find()
+      .populate('sender', 'email')
+      .populate('receiver', 'email');
+    
+    if (!transactions || transactions.length === 0) {
+      return res.status(404).json({ message: 'No transactions found' });
+    }
+
+    res.status(200).json(transactions);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+

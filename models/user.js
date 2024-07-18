@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true, trim: true },
   tc: { type: Boolean, required: true },
   balance: { type: Number, default: 1000 },
+  role: { type: String, enum: ['user', 'admin'],default: 'user',},
 });
 
 const User = mongoose.model('User', userSchema);

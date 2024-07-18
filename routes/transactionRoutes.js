@@ -1,7 +1,7 @@
 import express from 'express';
 import { transfer, transactionHistory, allTransactions } from '../controllers/transactionController.js';
 import checkAuth from '../middlewares/authMiddleware.js';
-import adminCheck from '../middleware/adminCheck.js';
+import adminCheck from '../middlewares/adminCheck.js';
 
 const router = express.Router();
 

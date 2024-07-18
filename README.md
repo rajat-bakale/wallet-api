@@ -20,7 +20,7 @@ The API is deployed on Render. You can access it here https://wallet-api-x5wq.on
 
 ### Postman Documentation 
 
-https://documenter.getpostman.com/view/36984655/2sA3kPq59J
+[https://documenter.getpostman.com/view/36984655/2sA3kPq59J](https://documenter.getpostman.com/view/36984655/2sA3kPq59J)
 
 ## Prerequisites
    - Node.js v12 or higher
